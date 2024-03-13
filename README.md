@@ -12,7 +12,7 @@ The package dependencies for running the notebooks can be installed by running:
 
 _Optional_ conda environment<br>
 `conda create --name snceg python=3.11`<br>
-`activate snceg`
+`conda activate snceg`
 
 `pip install nibabel nilearn huggingface_hub fastMONAI ipykernel`  
 
