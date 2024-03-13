@@ -10,8 +10,13 @@ The model is Pytorch-based and implemented with [fastMONAI](https://github.com/M
 ## Installation
 The package dependencies for running the notebooks can be installed by running:
 
-`pip install nibabel nilearn huggingface_hub fastMONAI`
+_Optional_ conda environment<br>
+`conda create --name snceg python=3.11`<br>
+`activate snceg`
 
+`pip install nibabel nilearn huggingface_hub fastMONAI ipykernel`  
+
+[FreeSurfer's](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall) `freeview` should be installed for interactive visualization 
 
 ## Contents
 - nbs/prediction.ipynb : Curated notebook for downloading and applying our pretrained model
