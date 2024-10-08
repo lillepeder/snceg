@@ -22,6 +22,7 @@ _Optional_ conda environment<br>
 [FreeSurfer's](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall) `freeview` may be installed for interactive visualization.
 
 ## Contents
+- snceg.py : python script to run the model
 - nbs/prediction.ipynb : Curated notebook for downloading and applying our pretrained model
 - data/mean_NM.nii.gz : Example dataset produced by averaging NM weighted MRIs from 82 subjects
 
