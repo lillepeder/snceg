@@ -6,17 +6,20 @@ The model is used to derive SNc masks from neuromelanin-weighted MRI, but is rel
 The model is Pytorch-based and implemented with [fastMONAI](https://github.com/MMIV-ML/fastMONAI/tree/master). For general tutorials on building models with fastMONAI, check their [documentation](https://fastmonai.no/).
 [Model repository](https://huggingface.co/lillepeder/SNceg-0.1)
 
+## Example use
+`python snceg.py --input data/mean_NM.nii.gz  --target_dir data/predictions --resample`
+We recommend always running with `--resample`.
 
 ## Installation
-The package dependencies for running the notebooks can be installed by running:
+The package dependencies for running the script or notebooks can be installed by running:
 
 _Optional_ conda environment<br>
 `conda create --name snceg python=3.11`<br>
 `conda activate snceg`
 
-`pip install nibabel nilearn huggingface_hub fastMONAI ipykernel`  
+`pip install pathlib huggingface_hub fastMONAI ipykernel`
 
-[FreeSurfer's](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall) `freeview` should be installed for interactive visualization 
+[FreeSurfer's](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall) `freeview` may be installed for interactive visualization.
 
 ## Contents
 - nbs/prediction.ipynb : Curated notebook for downloading and applying our pretrained model
