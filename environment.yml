@@ -1,0 +1,18 @@
+name: snceg
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - blas=1.0=mkl
+  - ipykernel=6.19.2=py311h6410fe4_0
+  - jupyter=1.0.0=py311h06a4308_8
+  - matplotlib=3.8.3=py311h38be061_0
+  - numpy=1.25.0=py311h08b1b3b_0
+  - pip=23.2.1=py311h06a4308_0
+  - python=3.11.6=hab00c5b_0_cpython
+  - pip:
+      - blis==0.7.10
+      - huggingface-hub==0.23.4
+      - fastmonai==0.4.0.2
