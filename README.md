@@ -15,9 +15,13 @@ Alternatively you can install the dependencies manually.
 
 ## Example use
 Activate your conda environment:
+
 `conda activate snceg` <br>
+
 Run prediction:
+
 `python snceg.py --input data/mean_NM.nii.gz  --target_dir data/predictions --resample` <br>
+
 We recommend always running with `--resample`.
 
 [FreeSurfer's](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall) `freeview` may be installed for interactive visualization.
