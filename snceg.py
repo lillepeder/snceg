@@ -1,10 +1,9 @@
 import argparse
 from pathlib import Path
-from fastMONAI.vision_augmentation import do_pad_or_crop
 from fastMONAI.vision_inference import _do_resize, _to_original_orientation
-from fastMONAI.vision_core import med_img_reader
-from fastMONAI.vision_all import load_learner, load_variables
+from fastMONAI.vision_all import load_learner, load_variables, med_img_reader, do_pad_or_crop
 from huggingface_hub import snapshot_download
+
 
 
 def _inference(learn_inf, reorder, resample, fn,
@@ -51,9 +50,13 @@ def get_model(model_dir):
 
 def run_one_sample(fn, learner, reorder=None, resample=None, outdir=None, pred_fn=None):
     """
-    Wrapper around _inference.
-    fn : input filename
+    Wrapper around _inference. Run the model on one image. 
+    fn : filename of input image
+    pred_fn : desired path of output prediction
     """
+    if isinstance(fn, str):
+        fn = Path(fn)
+    
     if outdir is None:
         outdir = fn.parent
 
@@ -64,14 +67,15 @@ def run_one_sample(fn, learner, reorder=None, resample=None, outdir=None, pred_f
         print('File', pred_fn, 'already exists. Skipping.')
         return pred_fn
 
-    print(fn, pred_fn, reorder, resample)
     # RUN PREDICTION
     pred = _inference(learn_inf=learner,
                       reorder=reorder,
                       resample=resample, 
                       fn=fn, 
                       save_path=pred_fn)
-        
+
+    print("Saved output file: ", pred_fn)
+    
     return pred_fn
 
 
@@ -113,10 +117,8 @@ def run(inp, output, target_dir, do_resample):
 
 
 def main():
-    # Initialize the ArgumentParser
     parser = argparse.ArgumentParser(description='Run SN segmentation algorithm.')
     
-    # Adding arguments
     parser.add_argument('-i', '--input', type=str, required=True,
                         help='The filename of the input image, or a directory containing multiple images. In the latter case, you must provide "--target_dir" and leave "--output" empty.')
     parser.add_argument('-o', '--output', type=str, required=False,
@@ -126,13 +128,11 @@ def main():
     parser.add_argument('-r', '--resample', action="store_true", 
                         help='Whether to resample the image prior to prediction. Should only be left out under special circumstances.')
     
-    # Parse the arguments
     args = parser.parse_args()
     
     # Ensure arguments were entered correctly
     assert not (bool(args.output) & bool(args.target_dir)), "You entered both --output and --target_dir. You can only enter either one or neither."
 
-    # Call the image processing function with the parsed arguments
     run(args.input, args.output, args.target_dir, args.resample)
 
 if __name__ == "__main__":
