@@ -8,6 +8,7 @@ The model is Pytorch-based and implemented with [fastMONAI](https://github.com/M
 
 ## Example use
 `python snceg.py --input data/mean_NM.nii.gz  --target_dir data/predictions --resample`
+
 We recommend always running with `--resample`.
 
 ## Installation
