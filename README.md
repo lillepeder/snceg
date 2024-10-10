@@ -7,20 +7,28 @@ The model is Pytorch-based and implemented with [fastMONAI](https://github.com/M
 [Model repository](https://huggingface.co/lillepeder/SNceg-0.1)
 
 ## Installation
-The package dependencies in for running the script or notebooks can be installed with conda:
+The package dependencies in for running the script or notebooks can be installed with [conda](https://www.anaconda.com):
 
 `conda env create -f environment.yml` <br>
 
-Alternatively you can install the dependencies manually.
+Alternatively you can install the dependencies manually. In that case, ensure you install numpy<=1.2.6.
 
-## Example use
-Activate your conda environment:
+## Usage
+First activate your conda environment:
 
 `conda activate snceg` <br>
 
-Run prediction:
+Example with single input:
 
-`python snceg.py --input data/mean_NM.nii.gz  --target_dir data/predictions --resample` <br>
+`python snceg.py --input data/mean_NM.nii.gz  --output data/SN_mask.nii.gz --resample` <br>
+
+Multiple input images from directory:
+
+`python snceg.py --input <directory_containing_images>  --target_dir <output directory> --resample` <br>
+
+Documentation:
+
+`python snceg.py --help`
 
 We recommend always running with `--resample`.
 
