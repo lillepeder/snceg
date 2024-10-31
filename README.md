@@ -1,7 +1,7 @@
-# snceg - Substantia Nigra pars compacta Segmentation with Attention U-Net.
-Attention U-Net trained on multi-modal MRI to segment the substantia nigra pars compacta.
+# snceg - Substantia Nigra Neuromelanin Segmentation with Attention U-Net.
+Attention U-Net for the segmenting the NM hyperintensity of the substantia nigra from Magnetization Transfer Contrast MRI.
 
-The model is used to derive SNc masks from neuromelanin-weighted MRI, but is relatively robust to other MRI modalities.
+The model is used to derive SN masks from neuromelanin-sensitive MRI, but was trained on multiparametric MRI and is relatively robust to other MRI modalities without NM-contrast.
 
 The model is Pytorch-based and implemented with [fastMONAI](https://github.com/MMIV-ML/fastMONAI/tree/master). For general tutorials on building models with fastMONAI, check their [documentation](https://fastmonai.no/).
 [Model repository](https://huggingface.co/lillepeder/SNceg-0.1)
